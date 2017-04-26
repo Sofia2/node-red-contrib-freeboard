@@ -8,7 +8,7 @@ var head=
   '                      freeboard.initialize(true);\n'+
   '                      var hash = window.location.hash;\n'+
   '                      if (hash !== null) {\n'+
-  '                          $.get("/freeboard_api/dashboard/"+hash.substring(1), function(data) {\n'+
+  '                          $.get("../freeboard_api/dashboard/"+hash.substring(1), function(data) {\n'+
   '							var datap=JSON.parse(data);\n'+
   '							if (!datap.empty){\n'+
   '								freeboard.loadDashboard(datap, function() {\n'+

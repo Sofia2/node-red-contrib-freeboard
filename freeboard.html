@@ -15,23 +15,42 @@
 -->
 
 <script type="text/x-red" data-template-name="freeboard">
+	
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-file"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="name">
-    </div>
+    </div class="form-row">
+	<div id="url">
+        
+	</div>
+	<script type="text/javascript">
+   
+		var pathname = window.location.pathname;
+		
+		var domain = pathname.split("/")[pathname.split("/").length-2];
+
+		domain='/'+domain+'/';
+		var url = "http://sofia2.com/console/motorFlujos" + domain + "freeboard";
+		var a = '<a id="url" target="_freeboard" href="'+url+'" style="padding-left: 254px;" >Open your local Freeboard</a>'
+		$("#url").append(a);	
+     </script>
+	
 </script>
 
 <script type="text/x-red" data-help-name="freeboard">
 	Using this node you can transmit information to freeboard. Just send some JSON msgs (for example using a function node) to this node and receive them in freeboard.<br/>
-	Open your local <a target="_freeboard" href="./freeboard">Freeboard</a> and add the Datasource that is named like the Freeboard Node in Node-RED (see "name" below "Properties" in the table above).
+		
 </script>
 
+
 <script type="text/javascript">
+	
     RED.nodes.registerType('freeboard',{
         category: 'advanced-function',
         color:"darksalmon",
         defaults: {
-            name: {value:""}
+            name: {value:""},
+			url: {value:""}
         },
         inputs:1,
         outputs:0,
